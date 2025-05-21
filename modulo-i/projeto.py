@@ -7,6 +7,8 @@
 #Willian Almeida
 
 import csv
+import os
+os.system("cls" if os.name == "nt" else "clear")  # Limpa o terminal
 
 
 # Função para realizar o tratamento do arquivo .csv
@@ -75,6 +77,7 @@ def remove_espacos_desnecessarios():
 # Definindo o arquivo a ser lido
 arquivo_globo = "interacoes_globo.csv"
 
+
 # Passando para a função o arquivo a ser lido e armazenando os retornos da função
 cabecalho, dados = carregar_dados_de_arquivo_csv(arquivo_globo)
 
@@ -97,3 +100,5 @@ tratando_nulos = tratamento_de_nulos(
     assistiu_n,
 )
 print(tratando_nulos)
+
+
