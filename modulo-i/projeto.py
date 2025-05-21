@@ -8,9 +8,13 @@
 
 import csv
 import os
-os.system("cls" if os.name == "nt" else "clear") # Limpa o terminal
+
+os.system("cls" if os.name == "nt" else "clear")  # Limpa o terminal
 import sys
-sys.stdout.reconfigure(encoding='utf-8') # Configura a codificação do terminal para UTF-8
+
+sys.stdout.reconfigure(
+    encoding="utf-8"
+)  # Configura a codificação do terminal para UTF-8
 
 
 # Função para realizar o tratamento do arquivo .csv
@@ -40,15 +44,16 @@ def carregar_dados_de_arquivo_csv(nome_arquivo):
         print(f"Erro ao ler o arquivo CSV '{nome_arquivo}': {e}")
         return None
 
+
 # Retirando None e espaços em branco e transformando em 0
 def tratamento_de_nulos(dados_csv, indice_tempo):
     for linha in dados_csv:
         for index, _ in enumerate(linha):
-            if index == indice_tempo and (linha[index] == '' or linha[index] == None):
+            if index == indice_tempo and (linha[index] == "" or linha[index] == None):
                 linha[index] = 0
 
     return dados_csv
-    
+
 
 # Converte a coluna desejada para inteiro
 def conversao_de_coluna_para_int(dados_csv, indice_coluna):
@@ -59,8 +64,17 @@ def conversao_de_coluna_para_int(dados_csv, indice_coluna):
 
     return dados_csv
 
+
 # Remove espaços desnecessários das strings
-def remove_espacos_desnecessarios(dados_csv):
+def remove_espacos_desnecessarios(cabecalho, dados_csv):
+    if not all(col in cabecalho for col in cabecalho):
+        raise ValueError("O cabeçalho não contém todas as colunas necessárias.")
+
+    if len(linha) != len(cabecalho):
+        raise IndexError(
+            "Os dados em `dados_csv` não estão consistentes com as colunas identificadas em `cabecalho`"
+        )
+
     for linha in dados_csv:
         for index, _ in enumerate(linha):
             if type(linha[index]) is str:
@@ -72,12 +86,16 @@ def remove_espacos_desnecessarios(dados_csv):
 # Definindo o arquivo a ser lido
 arquivo_globo = "interacoes_globo.csv"
 
-
 # Passando para a função o arquivo a ser lido e armazenando os retornos da função
 cabecalho, dados = carregar_dados_de_arquivo_csv(arquivo_globo)
 
+# Verificando se foi possível carregar o código
+if dados is None:
+    print("Erro ao carregar os dados. O programa será encerrado.")
+    exit()
+
 # Passando os dados para remover espaços desnecessários ao início e ao fim da string
-remove_espacos_desnecessarios(dados)
+remove_espacos_desnecessarios(cabecalho, dados)
 
 # Armazenando em variáveis o index das colunas necessárias
 tempo_assistido_index = cabecalho.index("watch_duration_seconds")
