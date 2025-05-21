@@ -83,6 +83,7 @@ def tratamento_de_nulos(
         ]
         for linha in lista_listas
     ]  # melhorar aqui!
+    
 
 
 # Converte a coluna desejada para Inteiro
@@ -217,7 +218,7 @@ tratando_nulos = tratamento_de_nulos(
     consumo_video,
     assistiu_n,
 )
-
+#print(tratando_nulos)
 
 
 
