@@ -1,10 +1,10 @@
 # Integrantes do grupo
-#Alice Uchôa#
-#Gabi Raposo
-#Isabela Clara
-#Michele Kethen
-#Rafael Mendes
-#Willian Almeida
+# Alice Ochoa
+# Gabriela Raposo
+# Isabela Clara
+# Mychelle Ketlen
+# Rafael Menezes
+# Willian Almeida
 
 import csv
 
