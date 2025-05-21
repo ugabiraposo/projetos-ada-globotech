@@ -1,3 +1,11 @@
+# Integrantes do grupo
+# Alice Ochoa
+# Gabriela Raposo
+# Isabela Clara
+# Mychelle Ketlen
+# Rafael Menezes
+# Willian Almeida
+
 import csv
 
 
@@ -56,8 +64,14 @@ def tratamento_de_nulos(
     ]  # melhorar aqui!
 
 
-def conversao_de_coluna_para_tipo_adequado(cabecalho_csv, dados_csv, coluna):
-    pass
+# Converte a coluna desejada para Inteiro
+def conversao_de_coluna_para_int(dados_csv, coluna):
+    for linha in dados_csv:
+        for index in range(len(linha)):
+            if index == coluna and linha[index - 1] == "view_start":
+                linha[index] = int(linha[index])
+
+    return dados_csv
 
 
 def remove_espacos_desnecessarios():
@@ -88,4 +102,6 @@ tratando_nulos = tratamento_de_nulos(
     consumo_video,
     assistiu_n,
 )
-print(tratando_nulos)
+
+# Enviando os dados para função para converter o tempo assistido para inteiro
+conversao_de_tempo_para_int = conversao_de_coluna_para_int(dados, tempo_assistido_index)
