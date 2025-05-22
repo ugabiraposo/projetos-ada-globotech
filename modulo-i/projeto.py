@@ -49,8 +49,13 @@ def carregar_dados_de_arquivo_csv(nome_arquivo):
 def tratamento_de_nulos(dados_csv, indice_tempo):
     for linha in dados_csv:
         for index, _ in enumerate(linha):
-            if index == indice_tempo and (linha[index] == "" or linha[index] == None):
-                linha[index] = 0
+            try:
+                if index == indice_tempo and (
+                    linha[index] == "" or linha[index] == None
+                ):
+                    linha[index] = 0
+            except Exception as e:
+                print(f"{e}: não foi possível alterar o valor para 0")
 
     return dados_csv
 
@@ -59,8 +64,11 @@ def tratamento_de_nulos(dados_csv, indice_tempo):
 def conversao_de_coluna_para_int(dados_csv, indice_coluna):
     for linha in dados_csv:
         for index, _ in enumerate(linha):
-            if index == indice_coluna:
-                linha[index] = int(linha[index])
+            try:
+                if index == indice_coluna:
+                    linha[index] = int(linha[index])
+            except Exception as e:
+                print(f"{e}: não foi possíel alterar o tipo para inteiro")
 
     return dados_csv
 
