@@ -13,7 +13,6 @@ Aqui você encontrará os desafios propostos e as soluções desenvolvidas de fo
 - [@Williannca85](https://github.com/Williannca85)
 - [@devrsmenezes](https://github.com/devrsmenezes)
 - [@isabelacmaia](https://github.com/isabelacmaia)
-- [@ugabiraposo](https://github.com/ugabiraposo)
 
 ---
 
