@@ -13,9 +13,12 @@ Aqui você encontrará os desafios propostos e as soluções desenvolvidas de fo
 - [@Williannca85](https://github.com/Williannca85)
 - [@devrsmenezes](https://github.com/devrsmenezes)
 - [@isabelacmaia](https://github.com/isabelacmaia)
+- [@ugabiraposo](https://github.com/ugabiraposo)]
 
 ---
 
 ## 💡 Sobre o repositório
 
 Este repositório tem como objetivo documentar e versionar os projetos realizados em parceria com a Globotech, promovendo o aprendizado prático, o trabalho em equipe e o desenvolvimento de soluções que integram lógica, criatividade e boas práticas de programação.
+
+
