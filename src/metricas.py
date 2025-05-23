@@ -43,13 +43,47 @@ def media_tempo_visualizacao(dados):
         }
     return resultado
 
-def listar_comentarios(id_conteudo, dados):
-    if id_conteudo not in dados:
-        return []
-    comentarios = [i['comment_text'] for i in dados[id_conteudo]['interacoes'] if i['tipo_interacao'] == 'comment' and i['comment_text']]
-    return comentarios
+
 
 def top5_conteudos_visualizacao(dados):
     totais = tempo_total_visualizacao(dados)
     ordenados = sorted(totais.items(), key=lambda x: x[1]['tempo_total_visualizacao'], reverse=True)
     return ordenados[:5]
+
+def listar_comentarios(id_conteudo, dados):
+    """Lista os comentários de um conteúdo específico."""
+    comentarios = []
+    if id_conteudo in dados:
+        for interacao in dados[id_conteudo]["interacoes"]:
+            if interacao["tipo_interacao"] == "comment" and interacao["comment_text"]:
+                comentarios.append(interacao["comment_text"])
+    return comentarios
+
+
+def listar_comentarios_por_conteudo(dados):
+    """
+    Lista os comentários de todos os conteúdos, apenas do tipo 'comment'.
+    """
+    resultado = {}
+    for id_conteudo, info in dados.items():
+        if 'interacoes' in info and isinstance(info['interacoes'], list):
+            comentarios_do_conteudo = [
+                i['comment_text'] for i in info['interacoes']
+                if i['tipo_interacao'] == 'comment' and i['comment_text']
+            ]
+            resultado[id_conteudo] = {
+                'nome_conteudo': info['nome_conteudo'],
+                'comentarios': comentarios_do_conteudo
+            }
+    return resultado
+
+def converter_segundos_para_hms(segundos):
+    """Converte segundos em formato HH:MM:SS."""
+    
+    if not isinstance(segundos, (int, float)):
+        raise ValueError("O argumento deve ser um número")
+    horas = segundos // 3600
+    minutos = (segundos % 3600) // 60
+    segundos_restantes = segundos % 60
+
+    return f"{int(horas):02d}:{int(minutos):02d}:{segundos_restantes:05.2f}"

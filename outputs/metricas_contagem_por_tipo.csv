@@ -1,0 +1,42 @@
+id_conteudo,nome_conteudo,tipo_interacao,quantidade
+1,Jornal Nacional,view_start,10
+2,Novela Renascer,view_start,6
+2,Novela Renascer,like,1
+2,Novela Renascer,comment,1
+2,Novela Renascer,share,2
+3,Podcast Papo de Segunda,view_start,7
+3,Podcast Papo de Segunda,comment,9
+3,Podcast Papo de Segunda,share,3
+3,Podcast Papo de Segunda,like,2
+4,Jogo do Brasileirão Série A,view_start,8
+4,Jogo do Brasileirão Série A,comment,7
+4,Jogo do Brasileirão Série A,share,1
+4,Jogo do Brasileirão Série A,like,2
+5,Mais Você,view_start,5
+6,The Voice Brasil,view_start,30
+6,The Voice Brasil,like,9
+6,The Voice Brasil,share,2
+6,The Voice Brasil,comment,4
+7,Podcast GE Tabelando,view_start,9
+7,Podcast GE Tabelando,comment,16
+7,Podcast GE Tabelando,share,1
+7,Podcast GE Tabelando,like,2
+8,Sessão da Tarde Clássicos,view_start,5
+8,Sessão da Tarde Clássicos,like,1
+9,Show da Virada,view_start,2
+10,Documentário Amazônia Viva,view_start,5
+10,Documentário Amazônia Viva,like,1
+10,Documentário Amazônia Viva,share,1
+11,Receitas da Ana Maria,view_start,2
+12,Futebol de Sabado,view_start,7
+12,Futebol de Sabado,comment,5
+12,Futebol de Sabado,like,1
+13,Desenrola Brasil Podcast,view_start,3
+13,Desenrola Brasil Podcast,comment,3
+13,Desenrola Brasil Podcast,like,1
+14,Globo Repórter Especial,view_start,4
+14,Globo Repórter Especial,share,1
+15,Domingão com Huck,view_start,4
+15,Domingão com Huck,like,2
+15,Domingão com Huck,comment,1
+15,Domingão com Huck,share,1

@@ -10,7 +10,7 @@ def limpar_dados(lista_dados):
             timestamp = item['timestamp_interacao'].strip()
             plataforma = item['plataforma'].strip()
             tipo_interacao = item['tipo_interacao'].strip().lower()
-            comment_text = item['comment_text'].strip()
+            comment_text = item['comment_text'].strip() if item['comment_text'] else ''
 
             raw_duracao = item['watch_duration_seconds'].strip()
             if raw_duracao == '':
@@ -30,7 +30,7 @@ def limpar_dados(lista_dados):
             })
 
         except (ValueError, TypeError) as e:
-            print(f"Erro na linha {item}: {e}")
+            print(f"Erro ao processar item {item}: {e}")
             continue
 
     return dados_limpos
