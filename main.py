@@ -33,10 +33,6 @@ metricas_tempo_total = tempo_total_visualizacao(dados_estruturados)
 metricas_media_tempo = media_tempo_visualizacao(dados_estruturados)
 top5 = top5_conteudos_visualizacao(dados_estruturados)
 
-#Criando pasta Outputs
-criando_pasta = criar_pasta
-
-
 
 # -----------------------------
 # 🖥️ Menu Interativo
@@ -92,7 +88,7 @@ while True:
             print(f"📺 {conteudo} - {nome_conteudo}: {tempo_formatado}")
 
     elif opcao == "4":
-        print("\n⏱️ Média de tempo de visualização por conteúdo: \n")
+        print("\n⏱️  Média de tempo de visualização por conteúdo: \n")
         for conteudo, metrica in metricas_media_tempo.items():
             nome_conteudo = metrica["nome_conteudo"]
             tempo_formatado = converter_segundos_para_hms(
@@ -115,7 +111,7 @@ while True:
             comentarios = listar_comentarios(id_conteudo, dados_estruturados)
             if comentarios:
                 print(
-                    f"\n💬 Comentários do conteúdo {id_conteudo} - {dados_estruturados[id_conteudo]['nome_conteudo']}:"
+                    f"\n💬 Lista de Comentários do conteúdo {id_conteudo} - {dados_estruturados[id_conteudo]['nome_conteudo']}:"
                 )
                 for comentario in comentarios:
                     print(f"➡️  {comentario}")
