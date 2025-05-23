@@ -54,10 +54,6 @@ metricas_tempo_total = tempo_total_visualizacao(dados_estruturados)
 metricas_media_tempo = media_tempo_visualizacao(dados_estruturados)
 top5 = top5_conteudos_visualizacao(dados_estruturados)
 
-#Criando pasta Outputs
-criando_pasta = criar_pasta
-
-
 
 # -----------------------------
 # 🖥️ Menu Interativo
