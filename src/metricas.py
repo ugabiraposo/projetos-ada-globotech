@@ -2,6 +2,8 @@
 from collections import Counter
 
 def total_interacoes_por_conteudo(dados):
+    # Conta o total de interações por conteúdo
+    # Considera apenas os tipos de interação: like, share e comment
     resultado = {}
     for id_conteudo, info in dados.items():
         interacoes = info['interacoes']
@@ -13,6 +15,7 @@ def total_interacoes_por_conteudo(dados):
     return resultado
 
 def contagem_por_tipo(dados):
+    # Conta a ocorrência de cada tipo de interação em cada conteúdo
     resultado = {}
     for id_conteudo, info in dados.items():
         contagem = Counter(i['tipo_interacao'] for i in info['interacoes'])
@@ -23,6 +26,7 @@ def contagem_por_tipo(dados):
     return resultado
 
 def tempo_total_visualizacao(dados):
+    # Calcula o tempo total de visualização de cada conteúdo
     resultado = {}
     for id_conteudo, info in dados.items():
         total = sum(i['watch_duration_seconds'] for i in info['interacoes'] if i['watch_duration_seconds'])
@@ -33,6 +37,7 @@ def tempo_total_visualizacao(dados):
     return resultado
 
 def media_tempo_visualizacao(dados):
+    # Calcula a média de tempo de visualização de cada conteúdo
     resultado = {}
     for id_conteudo, info in dados.items():
         tempos = [i['watch_duration_seconds'] for i in info['interacoes'] if i['watch_duration_seconds'] and i['watch_duration_seconds'] > 0]
@@ -46,6 +51,7 @@ def media_tempo_visualizacao(dados):
 
 
 def top5_conteudos_visualizacao(dados):
+    """Retorna os 5 conteúdos com mais tempo total de visualização."""
     totais = tempo_total_visualizacao(dados)
     ordenados = sorted(totais.items(), key=lambda x: x[1]['tempo_total_visualizacao'], reverse=True)
     return ordenados[:5]

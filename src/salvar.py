@@ -2,6 +2,7 @@ import csv
 
 
 def salvar_metricas_em_csv(nome_arquivo, dados, campos_extra):
+    """Salva as métricas em um arquivo CSV."""
     with open(nome_arquivo, "w", newline="", encoding="utf-8") as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(["id_conteudo", "nome_conteudo"] + campos_extra)
@@ -13,6 +14,7 @@ def salvar_metricas_em_csv(nome_arquivo, dados, campos_extra):
 
 
 def salvar_contagem_por_tipo(nome_arquivo, dados):
+    """Salva a contagem de interações por tipo em um arquivo CSV."""
     with open(nome_arquivo, "w", newline="", encoding="utf-8") as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(
@@ -24,6 +26,7 @@ def salvar_contagem_por_tipo(nome_arquivo, dados):
 
 
 def salvar_top5(nome_arquivo, dados):
+    """Salva os 5 conteúdos com mais tempo total de visualização em um arquivo CSV."""
     with open(nome_arquivo, "w", newline="", encoding="utf-8") as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(["id_conteudo", "nome_conteudo", "tempo_total_visualizacao"])
