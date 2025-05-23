@@ -71,12 +71,19 @@ while True:
             print(f"📺 {conteudo} - {nome_conteudo}: {metrica['total_interacoes']} interações")
 
     elif opcao == "2":
-        print("\n📊 Contagem por tipo de interação: \n")
+        print("\n Contagem por tipo de interação: \n")
         for id_conteudo, info in metricas_tipos.items():
             print(f"➡️  {info['nome_conteudo']}")
             for tipo, contagem in info['contagem_por_tipo'].items():
-                print(f"  {tipo}: {contagem}")
-            print()
+                if tipo == "view_start":
+                    print(f"  👀  {tipo}: {contagem}")
+                elif tipo == "like":
+                    print(f"  ❤️   {tipo}: {contagem}")
+                elif tipo == "comment":
+                    print(f"  💬  {tipo}: {contagem}")
+                elif tipo == "share":
+                    print(f"  🤝  {tipo}: {contagem}")
+            print("---------------------------------------")    
 
     elif opcao == "3":
         print("\n⏱️ Tempo total de visualização por conteúdo: \n")
@@ -93,10 +100,10 @@ while True:
             print(f"📺 {conteudo} - {nome_conteudo}: {tempo_formatado}")
 
     elif opcao == "5":
-        print("\n🏆Top 5 de conteúdos com mais tempo de visualização: \n")
+        print("\n🏆 Top 5 de conteúdos com mais tempo de visualização: \n")
         for conteudo, info in top5:
             tempo_formatado = converter_segundos_para_hms(info['tempo_total_visualizacao'])
-            print(f"📺 {conteudo}: {info['nome_conteudo']} - {tempo_formatado}")
+            print(f"📺 {info['nome_conteudo']} - {tempo_formatado}")
 
     elif opcao == "6":
         id_conteudo = input("Digite o ID do conteúdo que deseja ver os comentários: \n")
@@ -132,7 +139,7 @@ while True:
         print("✅ Métricas salvas na pasta outputs/")
 
     elif opcao == "9":
-        print("👋 Saindo do sistema. Até logo!")
+        print("👋 Saindo do sistema. Até logo! \n")
         break
 
     else:

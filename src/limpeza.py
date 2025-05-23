@@ -1,5 +1,10 @@
 
 def limpar_dados(lista_dados):
+    """
+    Limpa e valida os dados de interações.
+    Remove espaços em branco, converte tipos e trata valores ausentes.
+    Retorna uma lista de dicionários com os dados limpos.
+    """
     dados_limpos = []
 
     for item in lista_dados:

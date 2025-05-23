@@ -6,6 +6,7 @@ sys.stdout.reconfigure(
 
 
 def carregar_csv(caminho_arquivo):
+    """Carrega um arquivo CSV e retorna uma lista de dicionários."""
     if not os.path.exists(caminho_arquivo):
         print(f"Erro: Arquivo '{caminho_arquivo}' não encontrado.")
         return None
