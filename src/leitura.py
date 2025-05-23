@@ -21,7 +21,7 @@ def carregar_dados_de_arquivo_csv(nome_arquivo):
             # Resolução: Pegando o tamanho padrão da tabela através do cabeçalho
             #            Em cada linha compara o tamanho da linha com o tamanho do cabeçalho
             #            Caso o tamanho da linha seja maior que o tamanho do cabeçalho
-            #            Então será enviado para a função de tratamento de comentários com vírgula
+            #            Então será enviado para a função de tratamento de comentários com vírgula.
             num_colunas = len(cabecalho)
 
             # Adiciona todas as linhas (exceto o cabeçalho) à lista
