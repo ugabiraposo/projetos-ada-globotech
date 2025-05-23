@@ -1,32 +1,65 @@
 import os, sys, csv
-os.system('cls' if os.name == 'nt' else 'clear')
+
+os.system("cls" if os.name == "nt" else "clear")
 sys.stdout.reconfigure(
     encoding="utf-8"
 )  # Configura a codificação do terminal para UTF-8
 
 
-def carregar_csv(caminho_arquivo):
-    if not os.path.exists(caminho_arquivo):
-        print(f"Erro: Arquivo '{caminho_arquivo}' não encontrado.")
-        return None
-
+# Função padrão para carregamento de dados
+def carregar_dados_de_arquivo_csv(nome_arquivo):
     dados = []
+
     try:
-        with open(caminho_arquivo, 'r', encoding='utf-8') as arquivo:
-            leitor = csv.DictReader(arquivo)
-            for linha in leitor:
-                dados.append({
-                    'id_conteudo': linha.get('id_conteudo', ''),
-                    'nome_conteudo': linha.get('nome_conteudo', ''),
-                    'id_usuario': linha.get('id_usuario', ''),
-                    'timestamp_interacao': linha.get('timestamp_interacao', ''),
-                    'plataforma': linha.get('plataforma', ''),
-                    'tipo_interacao': linha.get('tipo_interacao', ''),
-                    'watch_duration_seconds': linha.get('watch_duration_seconds', ''),
-                    'comment_text': linha.get('comment_text', '')
-                })
+        with open(nome_arquivo, mode="r", encoding="utf-8", newline="") as arquivo_csv:
+            leitor_csv = csv.reader(arquivo_csv)
+
+            # Pegando apenas o cabeçalho da lista
+            cabecalho = next(leitor_csv)
+
+            # Problema:  Comentários com vírgula estão se tornando uma nova coluna no csv
+            # Resolução: Pegando o tamanho padrão da tabela através do cabeçalho
+            #            Em cada linha compara o tamanho da linha com o tamanho do cabeçalho
+            #            Caso o tamanho da linha seja maior que o tamanho do cabeçalho
+            #            Então será enviado para a função de tratamento de comentários com vírgula
+            num_colunas = len(cabecalho)
+
+            # Adiciona todas as linhas (exceto o cabeçalho) à lista
+            for linha in leitor_csv:
+                # Caso o tamanho da linha seja maior que o número de colunas,
+                # Significa que há vírgula no comentário, então será enviado
+                # Para a função para tratar o caso
+                if len(linha) > num_colunas:
+                    linha = tratamento_de_comentario_com_virgula(linha)
+                dados.append(linha)
+
+        if not dados:
+            print(f"Aviso: O arquivo CSV '{nome_arquivo}' está vazio.")
+            return None
+        return cabecalho, dados
+    except FileNotFoundError:
+        print(
+            f"Erro: Arquivo '{nome_arquivo}' não encontrado. Certifique-se de que ele está na mesma pasta do script."
+        )
+        return None
     except Exception as e:
-        print(f"Erro ao ler o arquivo: {e}")
+        print(f"Erro ao ler o arquivo CSV '{nome_arquivo}': {e}")
         return None
 
-    return dados
+
+# Função para tratar os comentários com vírgula
+# Tratando antes de enviar para a pipeline de limpeza
+def tratamento_de_comentario_com_virgula(linha):
+    # Inicializando o comentário de forma vazia
+    comentario = ""
+
+    # Percorrendo a linha enviada por parâmetro a partir da coluna de comentários
+    # Ou seja, independente da quantidade de vírgulas que haja no comentário,
+    # Tudo se tornará apenas 1 coluna, removendo as vírgulas
+    for c in linha[7:]:
+        comentario += c
+
+    # Após o tratamento do comentário, será retornado uma concatenação até uma coluna
+    # Anterior à coluna de comentário, que foi passado por parâmetro, juntamente
+    # Com o comentário gerado no for
+    return linha[:7] + [comentario]
