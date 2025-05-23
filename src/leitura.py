@@ -1,9 +1,14 @@
+# Função responsável por ler um arquivo CSV e transformar em uma lista de dicionários.
+
+
+# Importações dos módulos nativos 'os', 'csv' e 'sys'.
 import os, sys, csv
 
+# Limpa o terminal
 os.system("cls" if os.name == "nt" else "clear")
-sys.stdout.reconfigure(
-    encoding="utf-8"
-)  # Configura a codificação do terminal para UTF-8
+
+# Configura a codificação do terminal para UTF-8
+sys.stdout.reconfigure(encoding="utf-8")
 
 
 # Função padrão para carregamento de dados
@@ -21,7 +26,7 @@ def carregar_dados_de_arquivo_csv(nome_arquivo):
             # Resolução: Pegando o tamanho padrão da tabela através do cabeçalho
             #            Em cada linha compara o tamanho da linha com o tamanho do cabeçalho
             #            Caso o tamanho da linha seja maior que o tamanho do cabeçalho
-            #            Então será enviado para a função de tratamento de comentários com vírgula
+            #            Então será enviado para a função de tratamento de comentários com vírgula.
             num_colunas = len(cabecalho)
 
             # Adiciona todas as linhas (exceto o cabeçalho) à lista
@@ -50,16 +55,20 @@ def carregar_dados_de_arquivo_csv(nome_arquivo):
 # Função para tratar os comentários com vírgula
 # Tratando antes de enviar para a pipeline de limpeza
 def tratamento_de_comentario_com_virgula(linha):
-    # Inicializando o comentário de forma vazia
-    comentario = ""
+    try:
+        # Inicializando o comentário de forma vazia
+        comentario = ""
 
-    # Percorrendo a linha enviada por parâmetro a partir da coluna de comentários
-    # Ou seja, independente da quantidade de vírgulas que haja no comentário,
-    # Tudo se tornará apenas 1 coluna, removendo as vírgulas
-    for c in linha[7:]:
-        comentario += c
+        # Percorrendo a linha enviada por parâmetro a partir da coluna de comentários
+        # Ou seja, independente da quantidade de vírgulas que haja no comentário,
+        # Tudo se tornará apenas 1 coluna, removendo as vírgulas
+        for c in linha[7:]:
+            comentario += c
 
-    # Após o tratamento do comentário, será retornado uma concatenação até uma coluna
-    # Anterior à coluna de comentário, que foi passado por parâmetro, juntamente
-    # Com o comentário gerado no for
-    return linha[:7] + [comentario]
+        # Após o tratamento do comentário, será retornado uma concatenação até uma coluna
+        # Anterior à coluna de comentário, que foi passado por parâmetro, juntamente
+        # Com o comentário gerado no for
+        return linha[:7] + [comentario]
+    except Exception as e:
+        print(f"{e}: não foi possível tratar o comentário")
+        return None

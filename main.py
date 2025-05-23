@@ -1,9 +1,16 @@
+# Arquivo que executa o programa inteiro, oferece um menu interativo no console
+# e permite calcular e visualizar todas as métricas, além de gerar arquivos CSV.
+
+# Importações dos módulos internos (criados dentro da pasta /src) e dos módulos nativos 'os' e 'sys'.
 import os, sys
 
-os.system("cls" if os.name == "nt" else "clear")
-sys.stdout.reconfigure(encoding="utf-8")  # Corrige acentuação no terminal Windows
+# Importação da pipeline de limpeza de dados
 from src.limpeza import pipeline_limpeza
-from src.estrutura import estruturar_dados
+
+# Importação da função de estruturar dados
+from src.estrutura import agrupar_por_conteudo
+
+# Importação das funções de cálculo das métricas
 from src.metricas import (
     total_interacoes_por_conteudo,
     contagem_por_tipo,
@@ -14,18 +21,32 @@ from src.metricas import (
     listar_comentarios_por_conteudo,
     converter_segundos_para_hms,
 )
-from src.salvar import salvar_metricas_em_csv, salvar_contagem_por_tipo, salvar_top5
+
+# Salvamento dos resultados em CSV
+from src.salvar import (
+    salvar_metricas_em_csv,
+    salvar_contagem_por_tipo,
+    salvar_top5,
+)
+
+# Limpa o terminal
+os.system("cls" if os.name == "nt" else "clear")
+
+# Corrige acentuação no terminal Windows
+sys.stdout.reconfigure(encoding="utf-8")
 
 # 📥 Pasta de saída
 pasta_saida = "outputs/"
 
-# 📦 Pipeline inicial
+# 📦 Pipeline de limpeza
 print("Limpando dados...")
 dados_limpos = pipeline_limpeza()
 
+# 📦 Pipeline de estruturar dados
 print("Estruturando dados...")
-dados_estruturados = estruturar_dados(dados_limpos)
+dados_estruturados = agrupar_por_conteudo(dados_limpos)
 
+# 📦 Pipeline de métricas
 print("Calculando métricas...")
 metricas_interacoes = total_interacoes_por_conteudo(dados_estruturados)
 metricas_tipos = contagem_por_tipo(dados_estruturados)
