@@ -21,7 +21,7 @@ Aqui você encontrará o desafios proposto e a solução desenvolvida de forma c
 
 ## 💡 Sobre o repositório
 
-Este repositório tem como objetivo documentar e versionar os projetos realizados em parceria com a Globotech, promovendo o aprendizado prático, o trabalho em equipe e o desenvolvimento de soluções que integram lógica, criatividade e boas práticas de programação.
+Este repositório tem como objetivo documentar e versionar o primeiro projeto realizado em parceria com a Globotech, promovendo o aprendizado prático, o trabalho em equipe e o desenvolvimento de soluções que integram lógica, criatividade e boas práticas de programação.
 
 ---
 
