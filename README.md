@@ -1,4 +1,4 @@
-# 🤝 Ada x Globotech — Projetos em Grupo
+# 🤝 Ada x Globotech — Projeto em Grupo
 
 Este repositório reúne o primeiro projeto desenvolvido em equipe durante o desafio **Ada Tech x Globotech**, uma experiência colaborativa que simula vivências reais do mercado de tecnologia.
 
@@ -8,7 +8,7 @@ Aqui você encontrará o desafios proposto e a solução desenvolvida de forma c
 
 ---
 
-## 👥 Integrantes do grupo
+## 👥 Integrantes do grupo "Pythonautas"
 
 - [@falk-dev](https://github.com/falk-dev)
 - [@aliceochoa](https://github.com/aliceochoa)
