@@ -1,8 +1,8 @@
 # 🤝 Ada x Globotech — Projetos em Grupo
 
-Este repositório reúne os projetos desenvolvidos em equipe durante o desafio **Ada Tech x Globotech**, uma experiência colaborativa que simula vivências reais do mercado de tecnologia.
+Este repositório reúne o primeiro projeto desenvolvido em equipe durante o desafio **Ada Tech x Globotech**, uma experiência colaborativa que simula vivências reais do mercado de tecnologia.
 
-Aqui você encontrará os desafios propostos e as soluções desenvolvidas de forma conjunta pelo nosso grupo ao longo do programa.
+Aqui você encontrará o desafios proposto e a solução desenvolvida de forma conjunta pelo nosso grupo ao longo do programa.
 
 ---
 
