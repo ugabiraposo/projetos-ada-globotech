@@ -13,7 +13,7 @@ Aqui você encontrará o desafios proposto e a solução desenvolvida de forma c
 - [@Williannca85](https://github.com/Williannca85)
 - [@devrsmenezes](https://github.com/devrsmenezes)
 - [@isabelacmaia](https://github.com/isabelacmaia)
-- [@ugabiraposo](https://github.com/ugabiraposo)]
+- [@ugabiraposo](https://github.com/ugabiraposo)
 
 ---
 
